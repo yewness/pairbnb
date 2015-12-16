@@ -1,0 +1,33 @@
+<p>
+  <strong>Title:</strong>
+  <%= @listing.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @listing.description %>
+</p>
+
+<p>
+  <strong>Home type:</strong>
+  <%= @listing.home_type %>
+</p>
+
+<p>
+  <strong>Room type:</strong>
+  <%= @listing.room_type %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @listing.city %>
+</p>
+
+<p>
+  <strong>Tags:</strong>
+  <%= @listing.all_tags %>
+</p>
+
+
+<%= link_to 'Edit', edit_listing_path(@listing) %> |
+<%= link_to 'Back', listings_path %>
