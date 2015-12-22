@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  resources :listings
-  resources :listings
-  resources :listings
   #password authentication
   resources :passwords, controller: "clearance/passwords", only: [:create, :new]
   resource :session, controller: "clearance/sessions", only: [:create]
@@ -13,6 +10,10 @@ Rails.application.routes.draw do
   end
   # get '/users', to: 'users#new'
   resources :users, only: [:new]
+  
+  resources :listings do
+    resources :reservations
+  end
 
   # get "/sign_in" => "clearance/sessions#new", as: "sign_in"
   # delete "/sign_out" => "clearance/sessions#destroy", as: "sign_out"
@@ -26,11 +27,6 @@ Rails.application.routes.draw do
 
   root 'home#index'
   
-  
-
-  
-
-
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

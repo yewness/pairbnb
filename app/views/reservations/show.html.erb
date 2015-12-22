@@ -1,0 +1,22 @@
+<p>
+  <strong>User:</strong>
+  <%= @reservation.user.name %>
+</p>
+
+<p>
+  <strong>Listing:</strong>
+  <%= @reservation.listing.title %>
+</p>
+
+<p>
+  <strong>Start date:</strong>
+  <%= @reservation.start_date %>
+</p>
+
+<p>
+  <strong>End date:</strong>
+  <%= @reservation.end_date %>
+</p>
+
+<%= link_to 'Edit', edit_listing_reservation_path(@listing, @reservation) %> |
+<%= link_to 'Back', listing_reservations_path %>
