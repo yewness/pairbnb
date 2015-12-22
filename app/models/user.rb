@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
   include Clearance::User
   has_many :listings
+  has_many :reservations
+  has_one :photo
 
   def self.from_omniauth(auth)
   	where(provider: auth.provider, uid: auth.uid).first_or_create.tap do |user|

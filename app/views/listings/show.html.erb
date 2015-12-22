@@ -26,8 +26,17 @@
 <p>
   <strong>Tags:</strong>
   <%= @listing.all_tags %>
-</p>
+</p><br>
 
+<% if @listing.photo %>
+<p>
+ <%= link_to @listing.photo.url do %>
+ <%= image_tag(@listing.photo) %>
+ <% end %>
+</p>
+<% end %>
+
+<button><%= link_to 'Reserve this room!', new_listing_reservation_path(@listing) %></button><br>
 
 <%= link_to 'Edit', edit_listing_path(@listing) %> |
 <%= link_to 'Back', listings_path %>

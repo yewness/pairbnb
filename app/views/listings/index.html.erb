@@ -4,12 +4,12 @@
   <thead>
     <tr>
       <td></td>
-      <th>Title</th>
-      <th>Description</th>
+      <th>Name</th>
       <th>Home type</th>
       <th>Room type</th>
       <th>City</th>
       <th>Tags</th>
+      <th>Book now!</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -19,11 +19,11 @@
       <tr>
         <td><%= count += 1 %></td>
         <td><%= listing.title %></td>
-        <td><%= listing.description %></td>
         <td><%= listing.home_type %></td>
         <td><%= listing.room_type %></td>
         <td><%= listing.city %></td>
         <td><%= listing.all_tags %></td>
+        <td><button><%= link_to 'Reserve this room!', new_listing_reservation_path(listing) %></button></td>
         <td><%= link_to 'Show', listing %></td>
         <td><%= link_to 'Edit', edit_listing_path(listing) %></td>
         <td><%= link_to 'Destroy', listing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -31,7 +31,6 @@
     <% end %>
   </tbody>
 </table>
-
-<br>
+<%= will_paginate @listings %><br>
 
 <%= link_to 'New Listing', new_listing_path %>
