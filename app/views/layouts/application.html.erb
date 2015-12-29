@@ -21,7 +21,13 @@
 	    <div class="flash <%= key %>"><%= value %></div>
 	  <% end %>
 	</div>
-  <%= yield %><br>
+  <% if yield(:page) == 'home' %>
+    <%= render 'home/index' %>
+  <% end %>
+    <div class="container">
+      <%= yield %>
+    </div>
+  <br>
 </body>
 </html>
 

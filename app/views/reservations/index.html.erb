@@ -19,7 +19,7 @@
         <td><%= reservation.start_date %></td>
         <td><%= reservation.end_date %></td>
         <td><%= link_to 'Show', listing_reservation_path(@listing, reservation) %></td>
-        <td><%= link_to 'Edit', edit_listing_reservation_path(@listing, reservation) %></td>
+        <td><%= link_to 'Pay now', new_reservation_payment_method_path(reservation) %></td>
         <td><%= link_to 'Destroy', listing_reservation_path(@listing, reservation), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>

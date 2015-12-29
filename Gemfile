@@ -47,6 +47,13 @@ gem 'validates_overlap'
 # Deliver later
 gem 'sidekiq'
 
+# Payment service
+gem 'braintree'
+
+# ElasticSearch
+gem 'elasticsearch-model'
+gem 'elasticsearch-rails'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

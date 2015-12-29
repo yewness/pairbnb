@@ -28,6 +28,11 @@
   <%= @listing.all_tags %>
 </p><br>
 
+<p>
+  <strong>Price:</strong>
+  <%= @listing.price %>
+</p><br>
+
 <% if @listing.photo %>
 <p>
  <%= link_to @listing.photo.url do %>

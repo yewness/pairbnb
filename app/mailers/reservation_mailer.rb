@@ -1,5 +1,5 @@
 class ReservationMailer < ApplicationMailer
-	default from: "bobbysecretmail@gmail.com"
+	default from: "yewrails@gmail.com"
   	layout 'mailer'
 
 	def confirmation_email(customer, host, reservation_id)

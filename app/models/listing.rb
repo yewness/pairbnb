@@ -1,10 +1,14 @@
 class Listing < ActiveRecord::Base
+	include Elasticsearch::Model
+	include Elasticsearch::Model::Callbacks
+
 	belongs_to :user
 	has_many :listing_tags
 	has_many :tags, through: :listing_tags
 	has_many :reservations
 	has_many :photos
 	mount_uploader :photo, ListingPhotoUploader
+	
 
 	def all_tags=(names)
 		self.tags = names.split(",").map do |name|
@@ -26,4 +30,15 @@ class Listing < ActiveRecord::Base
       }
       self.tags = tag_objs
 	end
+
+	def as_indexed_json(options={})
+		self.as_json({
+			only: [:title, :description, :city, :photo],
+			include: {
+				tags: { only: :name},
+			}
+		})
+	end
 end
+
+Listing.import

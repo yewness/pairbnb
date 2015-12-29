@@ -34,6 +34,7 @@ class ReservationsController < ApplicationController
       if @reservation.save
         format.html { redirect_to listings_path, notice: 'Reservation was successfully created.' }
         format.json { render :show, status: :created, location: @reservation }
+
         ReservationJob.perform_later(@listing, @reservation, @reservation.id)
       else
         format.html { render :new }

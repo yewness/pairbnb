@@ -1,1 +1,23 @@
-show.erb
+<h1>User Profile</h1>
+
+<strong><%= @user.name %></strong><br>
+
+<h2>
+My Listings
+</h2>
+
+<div>
+	<% @user.listings.each do |listing| %>
+	<%= listing.title %><br>
+	<% end %>
+</div>
+
+<h2>
+My Reservations
+</h2>
+
+<div>
+	<% @user.reservations.each do |reservation| %>
+	<%= reservation.listing.title %><br>
+	<% end %>
+</div>

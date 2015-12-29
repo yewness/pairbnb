@@ -1,0 +1,41 @@
+<h1>Listing Search</h1>
+
+<%= form_for search_path, method: :get do |f| %>
+	<div class="input-append">
+		<%= text_field_tag :q, params[:q] %>
+		<%= submit_tag "Search", name: nil %>
+	</div>
+<% end %>
+
+<% if @listings.count != 0 %>
+	<h2>There is <%= @listings.count %> result(s) returned. </h2>
+	<ul>
+		<% @listings.each do |listing| %>
+		<li>
+
+			<div>
+				 <%= image_tag(listing.photo.url) %>
+			</div>
+			<h3> 
+				<%= link_to listing.title, listing_path(listing.id) %>
+			</h3>
+		</li>
+		<% end %>
+	</ul>
+<% elsif params[:q] == "" %>
+	<ul>
+		<% Listing.all.each do |listing| %>
+		<li>
+			<div>
+				 <%= image_tag(listing.photo.url) %>
+			</div>
+			<h3> 
+				<%= link_to listing.title, listing_path(listing.id) %>
+			</h3>
+		</li>
+		<% end %>
+	</ul>
+<% else %>
+	<h2>There is no result returned. What an ass...</h2>
+<% end %>
+	

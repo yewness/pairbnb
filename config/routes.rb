@@ -9,11 +9,18 @@ Rails.application.routes.draw do
       only: [:create, :edit, :update]
   end
   # get '/users', to: 'users#new'
-  resources :users, only: [:new]
+  resources :users, only: [:new, :show]
   
   resources :listings do
     resources :reservations
   end
+
+  resources :reservations do 
+    resources :payment_methods, only: [:new, :create]
+  end
+
+  # Searches
+  get 'search', to: 'search#search'
 
   # get "/sign_in" => "clearance/sessions#new", as: "sign_in"
   # delete "/sign_out" => "clearance/sessions#destroy", as: "sign_out"

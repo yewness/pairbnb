@@ -1,3 +1,11 @@
+<% provide(:page, 'home') %>
+
+<head>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -44,11 +52,12 @@
             <div class="header-content-inner">
                 <h1>WELCOME HOME</h1>
                 <p>Rent unique places to stay from local hosts in 190+ countries.</p>
-                <input type="file" name="file" style="visibility:hidden;" id="pdffile">
-                <div class="input-append">
-                <input type="text" name="subfile" placeholder="Please type your destination" id="subfile" style="width:400px" class="input-xlarge">
-                <a class="btn" onclick="$('#pdffile').click();">Browse</a>
-                </div><hr>
+                <%= form_tag search_path, method: :get do |f| %>
+                    <div class="input-append">
+                        <%= text_field_tag :q, params[:q], placeholder: "Search Here!", class: "text-black" %>
+                        <%= submit_tag "Search", name: nil, class: "btn" %>
+                    </div>
+                <% end %><hr>
                 <a href="#works" class="btn btn-primary btn-xl page-scroll">How It Works</a>
             </div>
         </div>
